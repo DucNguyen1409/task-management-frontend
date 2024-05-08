@@ -1,3 +1,3 @@
 export { TaskRestService } from './services/task-rest.service';
-export { AuthenticationControllerService } from './services/authentication-controller.service';
+export { AuthenticationRestService } from './services/authentication-rest.service';
 export { UserRestService } from './services/user-rest.service';

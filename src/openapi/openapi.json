@@ -44,7 +44,7 @@
     },
     "/api/v1/auth/register": {
       "post": {
-        "tags": ["authentication-controller"],
+        "tags": ["authentication-rest"],
         "operationId": "register",
         "requestBody": {
           "content": {
@@ -59,20 +59,14 @@
         "responses": {
           "202": {
             "description": "Accepted",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/AuthenticationResponseDto"
-                }
-              }
-            }
+            "content": { "application/json": { "schema": { "type": "object" } } }
           }
         }
       }
     },
     "/api/v1/auth/refresh": {
       "post": {
-        "tags": ["authentication-controller"],
+        "tags": ["authentication-rest"],
         "operationId": "refreshToken",
         "responses": {
           "200": {
@@ -90,7 +84,7 @@
     },
     "/api/v1/auth/login": {
       "post": {
-        "tags": ["authentication-controller"],
+        "tags": ["authentication-rest"],
         "operationId": "authenticate",
         "requestBody": {
           "content": {
@@ -106,7 +100,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AuthenticationResponseDto"
                 }
@@ -195,7 +189,7 @@
     },
     "/api/v1/auth/activate-account": {
       "get": {
-        "tags": ["authentication-controller"],
+        "tags": ["authentication-rest"],
         "operationId": "confirm",
         "parameters": [
           {

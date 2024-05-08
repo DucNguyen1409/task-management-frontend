@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { ApiConfiguration, ApiConfigurationParams } from './api-configuration';
 
 import { TaskRestService } from './services/task-rest.service';
-import { AuthenticationControllerService } from './services/authentication-controller.service';
+import { AuthenticationRestService } from './services/authentication-rest.service';
 import { UserRestService } from './services/user-rest.service';
 
 /**
@@ -17,7 +17,7 @@ import { UserRestService } from './services/user-rest.service';
   declarations: [],
   providers: [
     TaskRestService,
-    AuthenticationControllerService,
+    AuthenticationRestService,
     UserRestService,
     ApiConfiguration
   ],

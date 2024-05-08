@@ -9,18 +9,18 @@ import { BaseService } from '../base-service';
 import { ApiConfiguration } from '../api-configuration';
 import { StrictHttpResponse } from '../strict-http-response';
 
-import { authenticate } from '../fn/authentication-controller/authenticate';
-import { Authenticate$Params } from '../fn/authentication-controller/authenticate';
+import { authenticate } from '../fn/authentication-rest/authenticate';
+import { Authenticate$Params } from '../fn/authentication-rest/authenticate';
 import { AuthenticationResponseDto } from '../models/authentication-response-dto';
-import { confirm } from '../fn/authentication-controller/confirm';
-import { Confirm$Params } from '../fn/authentication-controller/confirm';
-import { refreshToken } from '../fn/authentication-controller/refresh-token';
-import { RefreshToken$Params } from '../fn/authentication-controller/refresh-token';
-import { register } from '../fn/authentication-controller/register';
-import { Register$Params } from '../fn/authentication-controller/register';
+import { confirm } from '../fn/authentication-rest/confirm';
+import { Confirm$Params } from '../fn/authentication-rest/confirm';
+import { refreshToken } from '../fn/authentication-rest/refresh-token';
+import { RefreshToken$Params } from '../fn/authentication-rest/refresh-token';
+import { register } from '../fn/authentication-rest/register';
+import { Register$Params } from '../fn/authentication-rest/register';
 
 @Injectable({ providedIn: 'root' })
-export class AuthenticationControllerService extends BaseService {
+export class AuthenticationRestService extends BaseService {
   constructor(config: ApiConfiguration, http: HttpClient) {
     super(config, http);
   }
@@ -34,7 +34,8 @@ export class AuthenticationControllerService extends BaseService {
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  register$Response(params: Register$Params, context?: HttpContext): Observable<StrictHttpResponse<AuthenticationResponseDto>> {
+  register$Response(params: Register$Params, context?: HttpContext): Observable<StrictHttpResponse<{
+}>> {
     return register(this.http, this.rootUrl, params, context);
   }
 
@@ -44,9 +45,12 @@ export class AuthenticationControllerService extends BaseService {
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  register(params: Register$Params, context?: HttpContext): Observable<AuthenticationResponseDto> {
+  register(params: Register$Params, context?: HttpContext): Observable<{
+}> {
     return this.register$Response(params, context).pipe(
-      map((r: StrictHttpResponse<AuthenticationResponseDto>): AuthenticationResponseDto => r.body)
+      map((r: StrictHttpResponse<{
+}>): {
+} => r.body)
     );
   }
 
