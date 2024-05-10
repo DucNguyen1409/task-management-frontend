@@ -11,7 +11,7 @@ import { TokenService } from 'src/app/services/token/token.service';
 })
 export class LoginComponent {
 
-  authRequest: AuthenticationRequestDto = {email: '', password: '', role: 'USER', name: 'duc'};
+  authRequest: AuthenticationRequestDto = {email: '', password: ''};
   errorMsg: Array<string> = [];
 
   constructor(
@@ -28,13 +28,12 @@ export class LoginComponent {
       next: (res: AuthenticationResponseDto) => {
         // save token
         this.tokenService.token = res.access_token as string;
-        this.router.navigate(['tasks']);
+
+        // this.router.navigate(['tasks']);
       },
       error: (err) => {
-        // TODO: check the response error
-        console.log(err.error.validationErrors);
-        if (err.error.validationErrors) {
-          this.errorMsg = err.error.validationErrors;
+        if (err.error.message) {
+          this.errorMsg = err.error.message;
         } else {
           this.errorMsg.push(err.error.errorMsg);
         }

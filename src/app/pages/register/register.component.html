@@ -6,7 +6,7 @@
     </div>
     <div class="mb-3">
         <label for="name" class="form-lable">Name</label>
-        <input [(ngModel)]="registerRequest.name" type="text" class="form-control" id="name" placeholder="user name">
+        <input [(ngModel)]="registerRequest.name" type="text" class="form-control" id="name" placeholder="username">
     </div>
     <div class="mb-3">
         <label for="login" class="form-lable">Email address</label>
@@ -18,7 +18,7 @@
     </div>
     <div class="mb-3">
         <label for="role" class="form-lable">Role</label>
-        <select class="form-select form-select-sm form-control" id="role">
+        <select class="form-select form-select-sm form-control" id="role" [(ngModel)]="selectedRole">
             <option *ngFor="let role of userRole" [ngValue]="role">{{ role }}</option>
         </select>
     </div>

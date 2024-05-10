@@ -1,6 +1,8 @@
 /* tslint:disable */
 /* eslint-disable */
-export interface AuthenticationRequestDto {
+export interface RegisterRequestDto {
   email: string;
+  name: string;
   password: string;
+  role: string;
 }

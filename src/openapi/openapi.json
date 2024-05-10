@@ -49,9 +49,7 @@
         "requestBody": {
           "content": {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AuthenticationRequestDto"
-              }
+              "schema": { "$ref": "#/components/schemas/RegisterRequestDto" }
             }
           },
           "required": true
@@ -213,7 +211,7 @@
           "userId": { "type": "string" }
         }
       },
-      "AuthenticationRequestDto": {
+      "RegisterRequestDto": {
         "required": ["email", "name", "password", "role"],
         "type": "object",
         "properties": {
@@ -228,6 +226,14 @@
         "properties": {
           "access_token": { "type": "string" },
           "refresh_token": { "type": "string" }
+        }
+      },
+      "AuthenticationRequestDto": {
+        "required": ["email", "password"],
+        "type": "object",
+        "properties": {
+          "email": { "type": "string" },
+          "password": { "type": "string" }
         }
       },
       "UserDto": {
